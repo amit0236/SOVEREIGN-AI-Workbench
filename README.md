@@ -89,4 +89,4 @@ npm start -- -p 3000
 
 Both services run locally on:
 * **Frontend UI**: `http://localhost:3000`
-* **Backend API**: `http://127.0.0.1:8000`
+* **Backend API**: `http://127.0.0.1:8001`
