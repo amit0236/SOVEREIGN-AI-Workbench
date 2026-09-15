@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F8F8F6;
+  --foreground: #1C1C1C;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Modern smooth scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F0F0EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CECEC8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E9E98;
+}
+
+::selection {
+  background: #2E6945;
+  color: #FFFFFF;
+}
+
+/* Smooth Entrance Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modern clean table styling */
+.tech-table th {
+  font-size: 12px;
+  font-weight: 600;
+  color: #61615B;
+  background-color: #F4F4F0;
+  padding: 12px 16px;
+  border-bottom: 1px solid #E2E2DC;
+  text-align: left;
+}
+
+.tech-table td {
+  font-size: 13.5px;
+  color: #1C1C1C;
+  padding: 13px 16px;
+  border-bottom: 1px solid #F0F0EC;
+}
+
+.tech-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tech-table tr:hover td {
+  background-color: #FCFCFA;
+}

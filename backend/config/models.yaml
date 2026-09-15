@@ -1,0 +1,59 @@
+# SOVEREIGN Model Registry Configuration
+# Air-gapped on-premise model definition
+version: "1.0"
+inference_engine:
+  provider: "ollama"
+  endpoint: "http://localhost:11434"
+  mode: "air-gapped"
+  fallback_mode: "deterministic_local_inference"
+
+models:
+  - id: "local-general"
+    name: "Qwen 2.5 14B Reasoning"
+    role: "General Reasoning & Policy Analysis"
+    format: "GGUF"
+    quantization: "Q4_K_M"
+    vram_usage: 8.7
+    vram_allocated_gb: 8.7
+    context_window: 32768
+    status: "LOADED"
+    category: "reasoning"
+    description: "Industrial policy synthesis, procedure cross-referencing, and technical narrative formulation."
+
+  - id: "local-vision"
+    name: "Qwen2-VL 7B Technical Vision"
+    role: "Document / P&ID / Diagram Analysis"
+    format: "AWQ / 4-bit"
+    quantization: "4-bit"
+    vram_usage: 7.9
+    vram_allocated_gb: 7.9
+    context_window: 16384
+    status: "LOADED"
+    category: "vision"
+    description: "Scanned engineering document OCR, table extraction, stamp inspection, and P&ID symbol detection."
+
+  - id: "local-code"
+    name: "Qwen2.5-Coder 7B Execution Engine"
+    role: "Calculation / Scripting / Sandbox"
+    format: "GGUF"
+    quantization: "Q4_K_M"
+    vram_usage: 6.2
+    vram_allocated_gb: 6.2
+    context_window: 32768
+    status: "LOADED"
+    category: "code"
+    description: "Engineering calculation synthesis, unit verification, and deterministic script generation."
+
+routing_rules:
+  - condition: "scanned_document_or_image"
+    target_model: "local-vision"
+    rationale: "SCANNED DOCUMENT ANALYSIS & OCR"
+  - condition: "calculation_or_formula"
+    target_model: "local-code"
+    rationale: "DETERMINISTIC NUMERICAL COMPUTATION"
+  - condition: "policy_or_sop_crosscheck"
+    target_model: "local-general"
+    rationale: "KNOWLEDGE RETRIEVAL & SPECIFICATION COMPARISON"
+  - condition: "comprehensive_inspection_workflow"
+    target_model: "agent-pipeline"
+    rationale: "MULTI-MODEL ORCHESTRATED WORKFLOW"
